@@ -8,8 +8,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan("com.example.blog.mapper")
+@MapperScan("com.example.mapper")
 public class MybatisConfig {
+    /*
+    分页插件
+     */
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
