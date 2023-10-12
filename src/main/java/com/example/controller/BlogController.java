@@ -42,15 +42,15 @@ public class BlogController {
     }
 
     @RequiresAuthentication
-    @GetMapping("/blog/edit")
+    @PostMapping("/blog/edit")
     public Result edit(@Validated @RequestBody Blog blog){
         Blog temp = null;
         if(blog.getId() != null){
             temp = blogService.getById(blog.getId());
-            Assert.isTrue(temp.getUserId().longValue() == ShiroUtil.getprofile().getId().longValue(),"没有权限编辑");
+            Assert.isTrue(temp.getUserId().longValue() == ShiroUtil.getProfile().getId().longValue(),"没有权限编辑");
         }else {
             temp = new Blog();
-            temp.setUserId(ShiroUtil.getprofile().getId());
+            temp.setUserId(ShiroUtil.getProfile().getId());
             temp.setCreated(LocalDateTime.now());
             temp.setStatus(0);
         }
