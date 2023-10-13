@@ -60,4 +60,11 @@ public class BlogController {
 
         return Result.succ(null);
     }
+    @RequiresAuthentication
+    @PostMapping("/blog/delete")
+    public Result delete(@RequestBody Blog blog){
+        blogService.DeleteById(blog);
+        return Result.succ(null);
+    }
+
 }
